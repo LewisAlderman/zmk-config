@@ -6,6 +6,16 @@ config ZMK_KEYBOARD_NAME
 config ZMK_SPLIT_ROLE_CENTRAL
     default y
 
+# Enable USB and ZMK Studio only on the left (central) half
+config ZMK_USB
+    default y
+
+config USB_CDC_ACM
+    default y
+
+config ZMK_STUDIO
+    default y
+
 endif # SHIELD_MY_HSHS46_LEFT
 
 if SHIELD_MY_HSHS46_LEFT || SHIELD_MY_HSHS46_RIGHT
