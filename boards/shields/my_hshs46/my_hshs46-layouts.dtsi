@@ -8,7 +8,7 @@
         compatible = "zmk,physical-layout";
         display-name = "Default Layout";
         transform = <&default_transform>;
-        kscan = <&kscan>;
+        kscan = <&kscan0>;
 
         // Physical layout for hshs46 split keyboard with pinky splay and exaggerated stagger
         // 46 keys total: 12 keys per hand on rows 0-1, 7 keys per hand on row 2, 4 thumb keys per hand on row 3
