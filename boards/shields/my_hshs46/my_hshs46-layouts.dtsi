@@ -1,0 +1,79 @@
+// See https://zmk.dev/docs/development/hardware-integration/physical-layouts
+// for how to configure this.
+
+#include <physical_layouts.dtsi>
+
+/ {
+    default_layout: default_layout {
+        compatible = "zmk,physical-layout";
+        display-name = "Default Layout";
+        transform = <&default_transform>;
+        kscan = <&kscan>;
+
+        // Physical layout for hshs46 split keyboard with pinky splay and exaggerated stagger
+        // 46 keys total: 12 keys per hand on rows 0-1, 7 keys per hand on row 2, 4 thumb keys per hand on row 3
+        // Left half: columns 0-5, Right half: columns 6-11
+        // Key size: 1900 units (1u), spacing: 1900 units between keys
+        // Gap between halves: 3800 units (2u)
+        // Column stagger: Pinky (0,11) lower, Ring (1,10) slightly lower, Middle (2,9) base, Index (3,8) higher, Inner (4,7) highest
+        // Pinky splay: Outer columns (0,5,6,11) rotated outward
+        keys  //                     w     h      x      y     rot    rx    ry
+            // Row 0 - Left hand (6 keys) - Top row with column stagger and pinky splay
+            = <&key_physical_attrs 1900 1900  -200   400     -15  9500     0>  // RC(0,0) - Pinky, lower, splayed
+            , <&key_physical_attrs 1900 1900  1700   200       0  9500     0>  // RC(0,1) - Ring, slightly lower
+            , <&key_physical_attrs 1900 1900  3600     0       0  9500     0>  // RC(0,2) - Middle, base
+            , <&key_physical_attrs 1900 1900  5500  -200       0  9500     0>  // RC(0,3) - Index, higher
+            , <&key_physical_attrs 1900 1900  7400  -300       0  9500     0>  // RC(0,4) - Inner index, highest
+            , <&key_physical_attrs 1900 1900  9300   100     -15  9500     0>  // RC(0,5) - Thumb column, splayed
+            // Row 0 - Right hand (6 keys) - Top row with column stagger and pinky splay
+            , <&key_physical_attrs 1900 1900 13100   100     15 13300     0>  // RC(0,6) - Thumb column, splayed
+            , <&key_physical_attrs 1900 1900 15000  -300       0 13300     0>  // RC(0,7) - Inner index, highest
+            , <&key_physical_attrs 1900 1900 16900  -200       0 13300     0>  // RC(0,8) - Index, higher
+            , <&key_physical_attrs 1900 1900 18800     0       0 13300     0>  // RC(0,9) - Middle, base
+            , <&key_physical_attrs 1900 1900 20700   200       0 13300     0>  // RC(0,10) - Ring, slightly lower
+            , <&key_physical_attrs 1900 1900 22600   400     15 13300     0>  // RC(0,11) - Pinky, lower, splayed
+            // Row 1 - Left hand (6 keys) - Middle row with column stagger
+            , <&key_physical_attrs 1900 1900  -200  2100     -15  9500  1900>  // RC(1,0) - Pinky, lower, splayed
+            , <&key_physical_attrs 1900 1900  1700  1900       0  9500  1900>  // RC(1,1) - Ring, slightly lower
+            , <&key_physical_attrs 1900 1900  3600  1700       0  9500  1900>  // RC(1,2) - Middle, base
+            , <&key_physical_attrs 1900 1900  5500  1500       0  9500  1900>  // RC(1,3) - Index, higher
+            , <&key_physical_attrs 1900 1900  7400  1400       0  9500  1900>  // RC(1,4) - Inner index, highest
+            , <&key_physical_attrs 1900 1900  9300  1800     -15  9500  1900>  // RC(1,5) - Thumb column, splayed
+            // Row 1 - Right hand (6 keys) - Middle row with column stagger
+            , <&key_physical_attrs 1900 1900 13100  1800     15 13300  1900>  // RC(1,6) - Thumb column, splayed
+            , <&key_physical_attrs 1900 1900 15000  1400       0 13300  1900>  // RC(1,7) - Inner index, highest
+            , <&key_physical_attrs 1900 1900 16900  1500       0 13300  1900>  // RC(1,8) - Index, higher
+            , <&key_physical_attrs 1900 1900 18800  1700       0 13300  1900>  // RC(1,9) - Middle, base
+            , <&key_physical_attrs 1900 1900 20700  1900       0 13300  1900>  // RC(1,10) - Ring, slightly lower
+            , <&key_physical_attrs 1900 1900 22600  2100     15 13300  1900>  // RC(1,11) - Pinky, lower, splayed
+            // Row 2 - Left hand (6 keys) - Bottom row with column stagger
+            , <&key_physical_attrs 1900 1900  -200  3800     -15  9500  3800>  // RC(2,0) - Pinky, lower, splayed
+            , <&key_physical_attrs 1900 1900  1700  3600       0  9500  3800>  // RC(2,1) - Ring, slightly lower
+            , <&key_physical_attrs 1900 1900  3600  3400       0  9500  3800>  // RC(2,2) - Middle, base
+            , <&key_physical_attrs 1900 1900  5500  3200       0  9500  3800>  // RC(2,3) - Index, higher
+            , <&key_physical_attrs 1900 1900  7400  3100       0  9500  3800>  // RC(2,4) - Inner index, highest
+            , <&key_physical_attrs 1900 1900  9300  3500     -15  9500  3800>  // RC(2,5) - Thumb column, splayed
+            // Row 2 - Left inner thumb (1 key) - ESC key, positioned in gap between halves
+            , <&key_physical_attrs 1900 1900 11400  4500       0 11400  4500>  // RC(3,5)
+            // Row 2 - Right inner thumb (1 key) - CAPS key, positioned in gap between halves
+            , <&key_physical_attrs 1900 1900 12350  4500       0 12350  4500>  // RC(3,6)
+            // Row 2 - Right hand (6 keys) - Bottom row with column stagger
+            , <&key_physical_attrs 1900 1900 13100  3500     15 13300  3800>  // RC(2,6) - Thumb column, splayed
+            , <&key_physical_attrs 1900 1900 15000  3100       0 13300  3800>  // RC(2,7) - Inner index, highest
+            , <&key_physical_attrs 1900 1900 16900  3200       0 13300  3800>  // RC(2,8) - Index, higher
+            , <&key_physical_attrs 1900 1900 18800  3400       0 13300  3800>  // RC(2,9) - Middle, base
+            , <&key_physical_attrs 1900 1900 20700  3600       0 13300  3800>  // RC(2,10) - Ring, slightly lower
+            , <&key_physical_attrs 1900 1900 22600  3800     15 13300  3800>  // RC(2,11) - Pinky, lower, splayed
+            // Row 3 - Left thumb cluster (4 keys) - Curved arc
+            , <&key_physical_attrs 1900 1900  1900  5500       0  4750  5500>  // RC(3,1) - Outer thumb
+            , <&key_physical_attrs 1900 1900  3800  5700       0  4750  5500>  // RC(3,2)
+            , <&key_physical_attrs 1900 1900  5700  5800       0  4750  5500>  // RC(3,3)
+            , <&key_physical_attrs 1900 1900  7600  5750       0  4750  5500>  // RC(3,4) - Inner thumb
+            // Row 3 - Right thumb cluster (4 keys) - Curved arc
+            , <&key_physical_attrs 1900 1900 13300  5750       0 15250  5500>  // RC(3,7) - Inner thumb
+            , <&key_physical_attrs 1900 1900 15200  5800       0 15250  5500>  // RC(3,8)
+            , <&key_physical_attrs 1900 1900 17100  5700       0 15250  5500>  // RC(3,9)
+            , <&key_physical_attrs 1900 1900 19000  5500       0 15250  5500>  // RC(3,10) - Outer thumb
+            ;
+    };
+};
