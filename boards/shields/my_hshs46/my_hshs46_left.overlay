@@ -4,8 +4,10 @@
 
 #include "my_hshs46.dtsi"
 
-&chosen {
-    zmk,physical-layout = &default_layout;
+/ {
+    chosen {
+        zmk,physical-layout = &default_layout;
+    };
 };
 
 &kscan0 {
