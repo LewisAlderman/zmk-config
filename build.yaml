@@ -19,9 +19,9 @@
 #
 ---
 include:
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: my_hshs46_left nice_view_adapter nice_view
     snippet: studio-rpc-usb-uart
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: my_hshs46_right nice_view_adapter nice_view
     snippet: studio-rpc-usb-uart
