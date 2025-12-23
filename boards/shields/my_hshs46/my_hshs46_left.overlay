@@ -22,7 +22,3 @@
     };
 };
 
-&cdc_acm_uart {
-    zmk,studio-name = "hshs46";
-};
-
